@@ -45,7 +45,7 @@ namespace KeepAlive
 
         private List<string> GetUrlsFromForm() {
             var txtBlob = txtUrlsToKeepAlive.Text;
-            var urls = txtBlob.Split(new string[] {",", "\n"}, StringSplitOptions.RemoveEmptyEntries);
+            var urls = txtBlob.Split(new string[] {",", "\n", Environment.NewLine}, StringSplitOptions.RemoveEmptyEntries);
             return urls.ToList();
         }
 
@@ -57,12 +57,20 @@ namespace KeepAlive
                 return;
             }
 
+            txtStatus.Text = "Running " + DateTime.Now.ToString() + Environment.NewLine;
             foreach (var url in urls) {
+                txtStatus.Text += "Loading " + url + Environment.NewLine;
+
                 WebClient web = new WebClient();
-                web.OpenRead(url);
-                txtStatus.Text += url + "\n";
+                web.DownloadStringCompleted += WebOnDownloadStringCompleted;
+                var uri = new Uri(url);
+                web.DownloadStringAsync(uri, uri);
             }
             _isPerformingKeepAlive = false;
+        }
+
+        private void WebOnDownloadStringCompleted(object sender, DownloadStringCompletedEventArgs eventArgs) {
+            txtStatus.Text += "Completed " + eventArgs.UserState + Environment.NewLine;
         }
 
         private void btnPauseResume_Click(object sender, EventArgs e) {
