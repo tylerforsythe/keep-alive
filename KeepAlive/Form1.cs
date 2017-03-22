@@ -26,7 +26,9 @@ namespace KeepAlive
         private int _currentSecondsCount = 0;
         private const int SECONDS_INTERVAL = 15;
         private Timer _keepAliveTimer;
-        
+        private int _urlsCount = 0;
+        private int _urlsReported = 0;
+
         private void KeepAliveTimerOnTick(object sender, EventArgs eventArgs) {
             if (_isPerformingKeepAlive) {
                 lblTimeUntilRefresh.Text = "loading...";
@@ -58,6 +60,10 @@ namespace KeepAlive
             }
 
             txtStatus.Text = "Running " + DateTime.Now.ToString() + Environment.NewLine;
+            _urlsCount = urls.Count;
+            _urlsReported = 0;
+            prgbarStatus.Value = 0;
+            prgbarStatus.Maximum = _urlsCount;
             foreach (var url in urls) {
                 txtStatus.Text += "Loading " + url + Environment.NewLine;
 
@@ -66,11 +72,14 @@ namespace KeepAlive
                 var uri = new Uri(url);
                 web.DownloadStringAsync(uri, uri);
             }
-            _isPerformingKeepAlive = false;
         }
 
         private void WebOnDownloadStringCompleted(object sender, DownloadStringCompletedEventArgs eventArgs) {
             txtStatus.Text += "Completed " + eventArgs.UserState + Environment.NewLine;
+            ++_urlsReported;
+            prgbarStatus.Value = _urlsReported;
+            if (_urlsReported >= _urlsCount)
+                _isPerformingKeepAlive = false;
         }
 
         private void btnPauseResume_Click(object sender, EventArgs e) {

@@ -68,13 +68,16 @@
             // txtUrlsToKeepAlive
             // 
             this.txtUrlsToKeepAlive.AcceptsReturn = true;
+            this.txtUrlsToKeepAlive.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.txtUrlsToKeepAlive.Location = new System.Drawing.Point(16, 152);
             this.txtUrlsToKeepAlive.Multiline = true;
             this.txtUrlsToKeepAlive.Name = "txtUrlsToKeepAlive";
             this.txtUrlsToKeepAlive.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.txtUrlsToKeepAlive.Size = new System.Drawing.Size(362, 118);
             this.txtUrlsToKeepAlive.TabIndex = 3;
-            this.txtUrlsToKeepAlive.Text = "http://imlocal:8080,http://lucylocal";
+            this.txtUrlsToKeepAlive.Text = "http://imlocal:8080,http://lucylocal,http://ktlocal:8082,http://orlocal:8083,http" +
+    "://wwlocal:8084/,http://swlocal:8085/,http://int.codaiinc.com:8030/redmine/";
             // 
             // label2
             // 
@@ -88,6 +91,9 @@
             // txtStatus
             // 
             this.txtStatus.AcceptsReturn = true;
+            this.txtStatus.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.txtStatus.Location = new System.Drawing.Point(19, 314);
             this.txtStatus.Multiline = true;
             this.txtStatus.Name = "txtStatus";
@@ -117,6 +123,7 @@
             // 
             // btnExit
             // 
+            this.btnExit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnExit.Location = new System.Drawing.Point(319, 12);
             this.btnExit.Name = "btnExit";
             this.btnExit.Size = new System.Drawing.Size(75, 23);
@@ -127,6 +134,8 @@
             // 
             // prgbarStatus
             // 
+            this.prgbarStatus.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.prgbarStatus.Location = new System.Drawing.Point(141, 285);
             this.prgbarStatus.Name = "prgbarStatus";
             this.prgbarStatus.Size = new System.Drawing.Size(237, 23);
