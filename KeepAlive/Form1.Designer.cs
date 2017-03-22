@@ -77,7 +77,7 @@
             this.txtUrlsToKeepAlive.Size = new System.Drawing.Size(362, 118);
             this.txtUrlsToKeepAlive.TabIndex = 3;
             this.txtUrlsToKeepAlive.Text = "http://imlocal:8080,http://lucylocal,http://ktlocal:8082,http://orlocal:8083,http" +
-    "://wwlocal:8084/,http://swlocal:8085/,http://int.codaiinc.com:8030/redmine/";
+    "://wwlocal:8084/,http://swlocal:8085/";
             // 
             // label2
             // 
